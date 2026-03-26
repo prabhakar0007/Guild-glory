@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUNA FF GLORY - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Bubbles Background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container">
+        <div class="card floating-card">
+            <div class="logo">
+                <h2>MUNA FF GLORY</h2>
+                <p>Guild Glory Bot System</p>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="error-msg" style="color: {{ 'red' if category=='danger' else 'green' }};">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+            <form method="POST">
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn pulse-btn">Login</button>
+                <div class="register-link">
+                    Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Customer Support Widget -->
+    <div class="support-widget">
+        <a href="https://wa.me/917978278539?text=Hello%20I%20need%20help%20with%20MUNA%20FF%20GLORY" target="_blank" class="support-link">
+            <i class="fab fa-whatsapp"></i>
+            <span>Customer Support</span>
+            <small>7978278539</small>
+        </a>
+    </div>
+</body>
+</html>

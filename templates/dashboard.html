@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUNA FF GLORY - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- canvas-confetti for celebration effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+</head>
+<body class="dashboard-page">
+    <nav class="navbar dark-nav">
+        <div class="nav-brand">MUNA FF GLORY</div>
+        <div class="nav-user">
+            <span>Welcome, {{ user.username }}</span>
+            <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>⚔️ GUILD GLORY ⚔️</h1>
+            <div class="service-status">
+                <span class="status-badge active">Bot Service: ACTIVE</span>
+            </div>
+            <h2>Guild Glory Bot Service</h2>
+            <p class="description">Boost your Free Fire guild glory fast with our automated bots. Safe, fast & reliable service.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Bots Ready</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30 min</div>
+                    <div class="stat-label">Avg Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plans Section -->
+        <div class="plans-section">
+            <h2 class="section-title">✨ Choose Your Plan ✨</h2>
+            <div class="packages">
+                <!-- 4 Bots Package -->
+                <div class="package-card" data-package="4">
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h3>🔥 Starter</h3>
+                    <div class="bots-count">4 Bots</div>
+                    <div class="price">₹300</div>
+                    <div class="glory">+175,000 Glory</div>
+                    <div class="bots-added">Bots Added: 4 Bots</div>
+                    <button class="select-btn">Select</button>
+                </div>
+                <!-- 8 Bots Package -->
+                <div class="package-card" data-package="8">
+                    <div class="card-icon"><i class="fas fa-robot"></i><i class="fas fa-robot"></i></div>
+                    <h3>⚡ Pro</h3>
+                    <div class="bots-count">8 Bots</div>
+                    <div class="price">₹600</div>
+                    <div class="glory">+350,000 Glory</div>
+                    <div class="bots-added">Bots Added: 8 Bots</div>
+                    <button class="select-btn">Select</button>
+                </div>
+                <!-- 12 Bots Package -->
+                <div class="package-card" data-package="12">
+                    <div class="card-icon"><i class="fas fa-robot"></i><i class="fas fa-robot"></i><i class="fas fa-robot"></i></div>
+                    <h3>💎 Ultimate</h3>
+                    <div class="bots-count">12 Bots</div>
+                    <div class="price">₹800</div>
+                    <div class="glory">+525,000 Glory</div>
+                    <div class="bots-added">Bots Added: 12 Bots</div>
+                    <button class="select-btn">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Guild Details -->
+    <div id="guildModal" class="modal dark-modal">
+        <div class="modal-content dark-modal-content">
+            <span class="close">&times;</span>
+            <h2>Enter Guild Details</h2>
+            <form id="guildForm">
+                <input type="text" id="guildId" placeholder="Guild ID" required>
+                <input type="text" id="leaderId" placeholder="Guild Leader ID" required>
+                <button type="submit" class="btn">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Payment -->
+    <div id="paymentModal" class="modal dark-modal">
+        <div class="modal-content dark-modal-content">
+            <span class="close">&times;</span>
+            <h2>Complete Payment</h2>
+            <div class="upi-box">
+                <p>Send payment to this UPI ID:</p>
+                <div class="upi-id" id="upiIdDisplay">dibyaranjanbro@fam</div>
+                <button id="copyUpiBtn" class="copy-btn">Copy UPI ID</button>
+            </div>
+            <form id="paymentForm">
+                <input type="text" id="transactionId" placeholder="Transaction ID" required>
+                <button type="submit" class="btn">Submit Payment</button>
+            </form>
+            <div id="paymentMsg"></div>
+        </div>
+    </div>
+
+    <!-- Full Screen Success Overlay -->
+    <div id="successOverlay" class="success-overlay" style="display: none;">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Congratulations! 🎉</h2>
+            <h3>Payment Successful!</h3>
+            <p>Your order has been placed successfully.</p>
+            <p>Bot will be added to your guild shortly.</p>
+            <button id="continueBtn" class="btn continue-btn">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
